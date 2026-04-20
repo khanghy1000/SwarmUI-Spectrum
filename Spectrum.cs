@@ -35,7 +35,7 @@ public class Spectrum : Extension
 
         SpectrumWParam = T2IParamTypes.Register<float>(
             new(
-                "w",
+                "Spectrum - w",
                 "Blending weight between predicted and last true features. Lower values (0.4-0.5) rely more on local momentum, preserving sharpness, while higher values rely on global spectral smoothing. setting w to 0 means using Local Taylor based approximation effectively ignoring the global smoothing parameters (m and lam).",
                 "0.3",
                 Max: 100,
@@ -48,7 +48,7 @@ public class Spectrum : Extension
 
         SpectrumMParam = T2IParamTypes.Register<int>(
             new(
-                "m",
+                "Spectrum - m",
                 "Number of Chebyshev polynomial basis functions (forecast complexity). Lower values (3) are generally more stable for short SDXL runs.",
                 "3",
                 Max: 100,
@@ -61,7 +61,7 @@ public class Spectrum : Extension
 
         SpectrumLamParam = T2IParamTypes.Register<float>(
             new(
-                "lam",
+                "Spectrum - lam",
                 "Ridge regularization strength. High values (1.0) prevent latent explosion, rainbow artifacts, and black outputs in low-precision modes.",
                 "0.1",
                 Max: 100,
@@ -74,7 +74,7 @@ public class Spectrum : Extension
 
         SpectrumWindowSizeParam = T2IParamTypes.Register<int>(
             new(
-                "Window size",
+                "Spectrum - window size",
                 "Initial forecasting window size (number of skipped steps).",
                 "2",
                 Max: 100,
@@ -87,7 +87,7 @@ public class Spectrum : Extension
 
         SpectrumFlexWindowParam = T2IParamTypes.Register<float>(
             new(
-                "Flex Window",
+                "Spectrum - flex window",
                 "Increment added to the window after each actual UNet pass. Higher values result in aggressive acceleration.",
                 "0.25",
                 Max: 100,
@@ -100,7 +100,7 @@ public class Spectrum : Extension
 
         SpectrumWarmupStepsParam = T2IParamTypes.Register<int>(
             new(
-                "Warmup steps",
+                "Spectrum - warmup steps",
                 "Number of initial full-model steps before forecasting begins. Gives the model time to establish composition. SDXL models need 6, DiT models need 8-10.",
                 "6",
                 Max: 100,
@@ -113,7 +113,7 @@ public class Spectrum : Extension
 
         SpectrumStopCachingStepParam = T2IParamTypes.Register<int>(
             new(
-                "Stop caching step",
+                "Spectrum - stop caching step",
                 "The exact step count where Spectrum stops accelerating and hands rendering back to the native UNet. Essential for recovering fine details. (e.g., If rendering 25 total steps, set to 22 to let the original UNet render the final 3 steps). Set to 100 to disable the guard for maximum speed. Default = Total Steps - 3.",
                 "22",
                 Max: 100,
@@ -126,7 +126,7 @@ public class Spectrum : Extension
 
         SpectrumStepsParam = T2IParamTypes.Register<int>(
             new(
-                "Total steps",
+                "Spectrum - steps",
                 "Additional manual passthrough of KSampler step count into the model forecaster (t_max / _taus normalization). Set to match your KSampler total steps for stable forecast accuracy and drift reduction. Default = Total sampling steps.",
                 "25",
                 Max: 100,
