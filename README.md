@@ -1,0 +1,1 @@
+## [ComfyUI-Spectrum-SDXL custom node](https://github.com/ruwwww/comfyui-spectrum-sdxl) wrapper for SwarmUI.
