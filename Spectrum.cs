@@ -172,7 +172,9 @@ public class Spectrum : Extension
                                 : 6,
                             ["stop_caching_step"] =
                                 g.UserInput.TryGet(SpectrumStopCachingStepParam, out int scs) ? scs
-                                : g.UserInput.TryGet(T2IParamTypes.Steps, out int steps) ? steps - 3
+                                : g.UserInput.TryGet(T2IParamTypes.Steps, out int steps)
+                                    ? steps - 3 > 0 ? steps - 3
+                                        : 0
                                 : 22,
                             ["steps"] =
                                 g.UserInput.TryGet(SpectrumStepsParam, out int ss) ? ss
